@@ -1,1 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GOTOPIA Nutrition AI</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f8f6;color:#18352a}
+header{background:white;padding:20px 7%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #e8eee9}
+.logo{font-size:22px;font-weight:800;color:#16834d}
+.logo span{color:#203c2d}
+nav a{margin-left:20px;text-decoration:none;color:#52675b;font-size:14px}
+main{max-width:1050px;margin:45px auto;padding:0 20px}
+.hero{text-align:center;margin-bottom:35px}
+.tag{color:#16834d;font-weight:bold;font-size:13px}
+h1{font-size:38px;margin:14px 0}
+.hero p{color:#718078;line-height:1.6}
+.panel{background:white;border:1px solid #e4ece6;border-radius:20px;padding:25px;box-shadow:0 8px 30px #18352a0a}
+.upload{border:2px dashed #b9d9c5;border-radius:16px;padding:35px 15px;text-align:center;background:#f8fcf9}
+.camera{font-size:40px}
+.upload p{color:#718078;font-size:14px}
+button,.upload-btn{background:#16834d;color:white;border:0;padding:14px 23px;border-radius:10px;font-weight:bold;cursor:pointer;display:inline-block}
+button:hover,.upload-btn:hover{background:#10683d}
+input{display:none}
+#preview{max-width:100%;max-height:280px;border-radius:12px;margin-top:20px}
+#status{color:#16834d;font-size:14px;margin-top:15px}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:15px;margin-top:25px}
+.feature{background:white;border:1px solid #e4ece6;border-radius:15px;padding:20px}
+.feature strong{display:block;margin-bottom:8px}
+.feature p{font-size:13px;color:#718078;line-height:1.5}
+footer{text-align:center;padding:35px;color:#819087;font-size:12px}
+@media(max-width:600px){
+h1{font-size:29px}
+nav a{margin-left:8px;font-size:12px}
+.features{grid-template-columns:1fr}
+header{padding:17px 5%}
+}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">GOTOPIA<span> Nutrition AI</span></div>
+  <nav><a href="#scan">Scan Makanan</a></nav>
+</header>
+
+<main>
+<section class="hero">
+  <div class="tag">✦ SMART NUTRITION TECHNOLOGY</div>
+  <h1>Kenali Nutrisi Makananmu.</h1>
+  <p>Unggah foto makanan dan mulai perjalanan hidup sehat bersama GOTOPIA Nutrition AI.</p>
+</section>
+
+<section class="panel" id="scan">
+  <h2>📸 Scan Makanan</h2>
+  <p style="color:#718078;font-size:14px">Pilih foto makanan dari perangkat kamu.</p>
+  <div class="upload">
+    <div class="camera">🥗</div>
+    <h3>Unggah Foto Makanan</h3>
+    <p>Format JPG, PNG atau WEBP</p>
+    <label class="upload-btn" for="photo">Pilih Foto</label>
+    <input type="file" id="photo" accept="image/*">
+    <div><img id="preview" hidden alt="Preview makanan"></div>
+    <div id="status"></div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="feature">
+    <strong>🔥 Kalori</strong>
+    <p>Estimasi energi dari makanan yang kamu konsumsi.</p>
+  </div>
+  <div class="feature">
+    <strong>💪 Protein</strong>
+    <p>Pantau kandungan protein makananmu.</p>
+  </div>
+  <div class="feature">
+    <strong>🥑 Nutrisi</strong>
+    <p>Kenali karbohidrat, lemak, serat dan gula.</p>
+  </div>
+</section>
+</main>
+
+<footer>© 2026 GOTOPIA Nutrition AI · Eat Smart, Live Healthy.</footer>
+
+<script>
+const photo = document.getElementById('photo');
+const preview = document.getElementById('preview');
+const statusText = document.getElementById('status');
+
+photo.addEventListener('change', function(){
+  const file = this.files[0];
+  if(!file) return;
+  if(!file.type.startsWith('image/')){
+    statusText.textContent = 'File harus berupa gambar.';
+    return;
+  }
+  preview.src = URL.createObjectURL(file);
+  preview.hidden = false;
+  statusText.textContent = 'Foto berhasil dipilih! Integrasi AI akan ditambahkan pada tahap berikutnya.';
+});
+</script>
+</body>
+</html>
 
